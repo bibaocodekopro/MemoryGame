@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.4/tailwind.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="scripts.js"></script>
+
+</head>
+
+
+<body class="bg-black h-screen w-screen flex  items-center">
+    <canvas id="confetti"></canvas>
+    <header>
+        <div class="header-title">
+            <div class="logo">
+                <img class="logo-img" src="logo.png" alt="">
+            </div>
+            <div class="title">
+                <h1>Hộp Quà Bí Mật</h1>
+            </div>
+
+        </div>
+
+        <div class="tab-menu">
+            <div class="tab">
+                <a href="">Thể lệ trò chơi</a>
+            </div>
+            <div class="tab">
+                <a href="">Hộp quà bí mật</a>
+            </div>
+            <div class="tab">
+                <a href="">Danh sách trúng thưởng</a>
+            </div>
+            <div class="tab">
+                <a href="">Thông tin game</a>
+            </div>
+        </div>
+    </header>
+    <div class="main">
+        <div class="box-in-top">
+            <div class="box">
+                <div id="cube1"
+                    class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer  shakeButton">
+                    <div class="hexagon absolute"></div>
+                    <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="powerup absolute"></div>
+
+                </div>
+            </div>
+            <div class="box">
+                <div id="cube2"
+                    class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
+                    <div class="hexagon absolute"></div>
+                    <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="powerup absolute"></div>
+                </div>
+            </div>
+            <div class="box">
+                <div id="cube3"
+                    class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
+                    <div class="hexagon absolute"></div>
+                    <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="powerup absolute"></div>
+                </div>
+            </div>
+        </div>
+        <div class="box-in-bottom">
+            <div class="box">
+                <div id="cube4"
+                    class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
+                    <div class="hexagon absolute"></div>
+                    <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="powerup absolute"></div>
+                </div>
+            </div>
+            <div class="box">
+                <div id="cube5"
+                    class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
+                    <div class="hexagon absolute"></div>
+                    <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="powerup absolute"></div>
+                </div>
+            </div>
+            <div class="box">
+                <div id="cube6"
+                    class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
+                    <div class="hexagon absolute"></div>
+                    <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
+                    <div class="powerup absolute"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup" id="myPopup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <div class="content-get-sale">
+                <h2>Chúc mừng bạn đã trúng Voucher</h2>
+                <img url="" alt="" id="img-sale">
+                <button onclick="" type="button" class="btn-get-sale">Nhận thưởng ngay !</button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+<script>
+    function closePopup() {
+        const popup = document.getElementById("myPopup");
+        const animation = document.getElementById("confetti");
+        popup.style.display = "none";
+        animation.style.display = "none";
+
+    }
+
+</script>
+
+</html>
