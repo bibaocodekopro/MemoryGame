@@ -289,11 +289,16 @@ a {
   padding: 0 12px 10px 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 11;
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: auto;
   border-radius: 10px;
   display: block;
 
+}
+
+#errorMessage {
+  text-align: center;
+  color: red;
 }
 
 .close {
@@ -310,7 +315,14 @@ a {
   color: black;
 }
 
-.ontent-get-sale {
+.content-get-sale {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content-get-coupon {
+  padding-bottom: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -326,10 +338,39 @@ h2 {
   height: 50%;
 }
 
+.title-show-coupon {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 20px 0;
+}
+
+.Coupon-show {
+  display: flex;
+  border: 1px solid rgb(182, 180, 180);
+  background-color: rgb(240, 233, 184);
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.copy-icon {
+  width: 52px;
+  height: 52px;
+  padding: 10px;
+  transition: 1s;
+}
+
+.coupon {
+  font-size: 25px;
+  padding: 10px;
+  margin: 0;
+}
+
+
 .btn-get-sale {
   display: flex;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 20px;
   padding: 20px;
   border: 1px solid gray;
   border-radius: 10px;
@@ -337,6 +378,7 @@ h2 {
   background-color: #e2e3e4;
   font-weight: 600;
   transition: 0.3s;
+
 }
 
 .btn-get-sale:hover,
@@ -353,4 +395,64 @@ canvas {
 
 .no-click {
   pointer-events: none;
+}
+
+.popup-get-gift {
+  position: fixed;
+  right: 10px;
+  top: 40vh;
+  display: none;
+}
+
+.btn-get-gift {
+  color: rgb(233, 214, 101);
+  border: 1px solid rgb(233, 214, 101);
+  padding: 5px;
+  border-radius: 5px;
+  background-color: black;
+  transition: 0.3s;
+
+}
+
+.btn-get-gift:hover {
+  background-color: rgb(233, 214, 101);
+  color: black;
+}
+
+.data-user {
+  padding: 20px;
+}
+
+label {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 95%;
+  border: 1px solid gray;
+  font-size: 20px;
+  margin-bottom: 5%;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.btn-get-data {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  padding: 10px;
+  border: 1px solid rgb(209, 207, 207);
+  border-radius: 10px;
+  font-size: x-large;
+  background-color: #faf176;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-get-data:hover,
+.btn-get-data:active {
+  background-color: #eeae65;
 }
