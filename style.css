@@ -4,7 +4,7 @@
   margin-left: auto;
   margin-right: auto;
   font-family: monospace;
-
+  max-width: 1920px;
 }
 
 html {
@@ -17,14 +17,15 @@ html {
 }
 
 body {
-  max-width: 1920px;
+
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/background-1698051402.png?_t=1698051402");
   overflow-x: hidden;
 
   margin-bottom: 30px;
+
 }
 
 ::-webkit-scrollbar {
@@ -179,14 +180,14 @@ header {
 }
 
 .back {
-  background-image: url("back-box.png");
+  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/back-box-1698051402.png?_t=1698051402");
   background-size: cover;
   background-position: center;
   z-index: -1;
 }
 
 .top {
-  background-image: url("top-box.png");
+  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/top-box-1698051403.png?_t=1698051403");
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -194,14 +195,14 @@ header {
 }
 
 .left {
-  background-image: url("left-box.png");
+  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/left-box-1698051402.png?_t=1698051402");
   background-size: cover;
   background-position: center;
   z-index: 1;
 }
 
 .right {
-  background-image: url("right-box.png");
+  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/right-box-1698051402.png?_t=1698051402");
   background-size: cover;
   background-position: center;
   z-index: 1;

@@ -1,18 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-
   // lấy tất cả các box ra
   const cubes = document.querySelectorAll(".box-cube");
   const transitionTime = "750ms";
 
   // Phần này random các hình theo mảng
   const randomSale = {
-    "1": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
-    "2": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-150k-1698051402.png?_t=1698051402",
-    "3": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-200k-1698051402.png?_t=1698051403",
-    "4": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-250k-1698051403.png?_t=1698051403",
-    "5": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
-    "6": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
+    "100k1": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
+    "100k2": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
+    "100k3": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
+    "150k": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-150k-1698051402.png?_t=1698051402",
+    "200k": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-200k-1698051402.png?_t=1698051403",
+    "250k": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-250k-1698051403.png?_t=1698051403",
   };
   // tạo sẵn giá trị random để lưu vào local storage khi người dùng đã mở hộp rồi
   let randomValue;
@@ -320,7 +318,14 @@ document.addEventListener("DOMContentLoaded", function () {
   //hàm kiểm tra xem biến giá trị random value và id của box có trong localstorage hay không
   // nếu có thì ta sẽ mở sẵn giá trị đó khi tải trang
   // nếu không thì mới cho người dùng mở hộp
-
+  //hàm kiểm tra xem đã có box nào mở chưa nếu có add class không cho mở nữa
+  function disableOtherCubes(openedCube, allCubes) {
+    allCubes.forEach(function (otherCube) {
+      if (otherCube !== openedCube) {
+        otherCube.classList.add("no-click");
+      }
+    });
+  }
   if (localStorage.getItem("userIpAddress")) {
     const savedIpAddress = localStorage.getItem("userIpAddress");
     getIpAddress(function (currentIpAddress) {
@@ -328,69 +333,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const randomValue = localStorage.getItem("randomValue");
         const cubeId = localStorage.getItem("cubeId");
         const cubeElement = document.getElementById(cubeId);
-        let isOpen = false;
 
-        cubes.forEach(function (cube) {
-          const ctop = cube.querySelector(".top");
-          const cleft = cube.querySelector(".left");
-          const cright = cube.querySelector(".right");
-          const glow = cube.querySelector(".hexagon");
-          const powerup = cube.querySelector(".powerup");
-
-          ctop.style.transition = `all ${transitionTime}`;
-          cleft.style.transition = `all ${transitionTime}`;
-          cright.style.transition = `all ${transitionTime}`;
-          powerup.style.transition = `all ${transitionTime}`;
-          glow.style.transition = `all ${transitionTime}`;
-
-          //hàm kiểm tra xem đã có box nào mở chưa nếu có add class không cho mở nữa
-          function disableOtherCubes() {
-            cubes.forEach(function (otherCube) {
-              if (otherCube !== cube) {
-                otherCube.classList.add("no-click");
-              }
-            });
-          }
-          function openCube(cube) {
-            const cubePowerup = cube.querySelector(".powerup");
-            cubePowerup.style.backgroundImage = `url(${randomValue})`;
-            document.getElementById("img-sale").setAttribute("src", randomValue);
-            changeVar(cube, "rgba(69,185,251,0.33)");
-
-            ctop.style.transform = "translateY(-3rem)";
-            cleft.style.transform = "translateX(-3rem)";
-            cright.style.transform = "translateX(3rem)";
-            ctop.style.opacity = 0.1;
-            cleft.style.opacity = 0.1;
-            cright.style.opacity = 0.1;
-            glow.style.opacity = 0.5;
-            powerup.style.opacity = 1;
-            cube.style.animationPlayState = "paused";
-            powerup.style.zIndex = 10;
-            powerup.style.height = "250px";
-            powerup.style.width = "250px";
-          }
-          if (!isOpen) {
-            disableOtherCubes(); //không cho mở box khi có box đã mở
-            openCube(cubeElement); // mở box với giá trị đã lưu trong localstogare
-            isOpen = true;
-          }
-        })
-      }
-    });
-  } else {
-    if (localStorage.getItem("randomValue") && localStorage.getItem("cubeId")) {
-      const randomValue = localStorage.getItem("randomValue");
-      const cubeId = localStorage.getItem("cubeId");
-      const cubeElement = document.getElementById(cubeId);
-      let isOpen = false;
-
-      cubes.forEach(function (cube) {
-        const ctop = cube.querySelector(".top");
-        const cleft = cube.querySelector(".left");
-        const cright = cube.querySelector(".right");
-        const glow = cube.querySelector(".hexagon");
-        const powerup = cube.querySelector(".powerup");
+        const ctop = cubeElement.querySelector(".top");
+        const cleft = cubeElement.querySelector(".left");
+        const cright = cubeElement.querySelector(".right");
+        const glow = cubeElement.querySelector(".hexagon");
+        const powerup = cubeElement.querySelector(".powerup");
 
         ctop.style.transition = `all ${transitionTime}`;
         cleft.style.transition = `all ${transitionTime}`;
@@ -398,14 +346,7 @@ document.addEventListener("DOMContentLoaded", function () {
         powerup.style.transition = `all ${transitionTime}`;
         glow.style.transition = `all ${transitionTime}`;
 
-        //hàm kiểm tra xem đã có box nào mở chưa nếu có add class không cho mở nữa
-        function disableOtherCubes() {
-          cubes.forEach(function (otherCube) {
-            if (otherCube !== cube) {
-              otherCube.classList.add("no-click");
-            }
-          });
-        }
+
         function openCube(cube) {
           const cubePowerup = cube.querySelector(".powerup");
           cubePowerup.style.backgroundImage = `url(${randomValue})`;
@@ -424,17 +365,55 @@ document.addEventListener("DOMContentLoaded", function () {
           powerup.style.height = "250px";
           powerup.style.width = "250px";
         }
-        if (!isOpen) {
-          disableOtherCubes(); //không cho mở box khi có box đã mở
-          openCube(cubeElement); // mở box với giá trị đã lưu trong localstogare
-          isOpen = true;
-          const getGift = document.querySelector(".popup-get-gift"); // hiện button nhận thưởng
-          getGift.style.display = "block";
-          getGift.addEventListener("click", function () {
-            showPopupGift();
-          });
-        }
-      })
+        disableOtherCubes(cubeElement, cubes); // Pass both cubeElement and cubes
+        openCube(cubeElement); // mở cube với giá trị đã lưu trong local storage
+      }
+    });
+  } else {
+    if (localStorage.getItem("randomValue") && localStorage.getItem("cubeId")) {
+      const randomValue = localStorage.getItem("randomValue");
+      const cubeId = localStorage.getItem("cubeId");
+      const cubeElement = document.getElementById(cubeId);
+
+      const ctop = cubeElement.querySelector(".top");
+      const cleft = cubeElement.querySelector(".left");
+      const cright = cubeElement.querySelector(".right");
+      const glow = cubeElement.querySelector(".hexagon");
+      const powerup = cubeElement.querySelector(".powerup");
+
+      ctop.style.transition = `all ${transitionTime}`;
+      cleft.style.transition = `all ${transitionTime}`;
+      cright.style.transition = `all ${transitionTime}`;
+      powerup.style.transition = `all ${transitionTime}`;
+      glow.style.transition = `all ${transitionTime}`;
+
+      function openCube(cube) {
+        const cubePowerup = cube.querySelector(".powerup");
+        cubePowerup.style.backgroundImage = `url(${randomValue})`;
+        document.getElementById("img-sale").setAttribute("src", randomValue);
+        changeVar(cube, "rgba(69,185,251,0.33)");
+        ctop.style.transform = "translateY(-3rem)";
+        cleft.style.transform = "translateX(-3rem)";
+        cright.style.transform = "translateX(3rem)";
+        ctop.style.opacity = 0.1;
+        cleft.style.opacity = 0.1;
+        cright.style.opacity = 0.1;
+        glow.style.opacity = 0.5;
+        powerup.style.opacity = 1;
+        cube.style.animationPlayState = "paused";
+        powerup.style.zIndex = 10;
+        powerup.style.height = "250px";
+        powerup.style.width = "250px";
+      }
+
+      disableOtherCubes(cubeElement, cubes); // Pass both cubeElement and cubes
+      openCube(cubeElement); // mở cube với giá trị đã lưu trong local storage
+      const getGift = document.querySelector(".popup-get-gift"); // hiện button nhận thưởng
+      getGift.style.display = "block";
+      getGift.addEventListener("click", function () {
+        showPopupGift();
+      });
+
 
       // khi không tồn tại giá trị nào trong local storage
     } else {
@@ -486,6 +465,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
               localStorage.setItem("cubeId", cubeId);
               localStorage.setItem("randomValue", randomValue);
+              console.log("randomvaue: " + randomValue + "cubeId:" + cubeId);
+              console.log(cube)
               const getGift = document.querySelector(".popup-get-gift");
               getGift.style.display = "block";
               getGift.addEventListener("click", function () {
@@ -520,6 +501,5 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-
 });
 
