@@ -17,110 +17,615 @@
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
+    <!-- Design for table  -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <script defer src="https://code.jquery.com/jquery-3.7.0.js">  </script>
+    <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js">  </script>
+    <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js">  </script>
 </head>
 
 
 <body class="bg-black h-screen w-screen flex  items-center">
+
     <script src="scripts.js"></script>
 
     <canvas id="confetti"></canvas>
     <header>
-        <div class="header-title">
-            <div class="logo">
-                <img class="logo-img" src="logo.png" alt="">
+        <div class="tab-menu">
+            <div class="tab">
+                <a class="title-tab" href="">Hộp quà bí mật</a>
             </div>
+            <div class="tab">
+                <a class="title-tab" href="">Thể lệ trò chơi</a>
+            </div>
+            <div class="tab">
+                <a class="title-tab" href="">Danh sách trúng thưởng</a>
+            </div>
+            <div class="tab">
+                <a class="title-tab" href="">Thông tin game</a>
+            </div>
+        </div>
+        <div class="slider">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://khoavang.vn/resources/cache/750x354x3/banner/uu-dai-laptop-gaming-1-1696922714.png"
+                            class="
+                            d-block w-100" alt="1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://khoavang.vn/resources/cache/750x354x3/banner/banner-hp-all-in-one-eliteone-800-g2-1683347897.png"
+                            class="
+                            d-block w-100" alt="2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://khoavang.vn/resources/cache/750x354x3/banner/banner-hp-all-in-one-eliteone-800-g2-1683347897.png"
+                            class="
+                            d-block w-100" alt="3">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="header-title">
+
             <div class="title">
                 <h1>Hộp Quà Bí Mật</h1>
             </div>
 
         </div>
 
-        <div class="tab-menu">
-            <div class="tab">
-                <a href="">Hộp quà bí mật</a>
-            </div>
-            <div class="tab">
-                <a href="">Thể lệ trò chơi</a>
-            </div>
-            <div class="tab">
-                <a href="">Danh sách trúng thưởng</a>
-            </div>
-            <div class="tab">
-                <a href="">Thông tin game</a>
-            </div>
-        </div>
+
     </header>
     <div class="main">
+        <div class="game">
+            <div class="box-in-top">
+                <div class="box">
+                    <div id="cube1"
+                        class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer  shakeButton">
+                        <div class="hexagon absolute"></div>
+                        <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="powerup absolute"></div>
 
-        <div class="box-in-top">
-            <div class="box">
-                <div id="cube1"
-                    class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer  shakeButton">
-                    <div class="hexagon absolute"></div>
-                    <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="powerup absolute"></div>
-
+                    </div>
+                </div>
+                <div class="box">
+                    <div id="cube2"
+                        class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
+                        <div class="hexagon absolute"></div>
+                        <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="powerup absolute"></div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div id="cube3"
+                        class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
+                        <div class="hexagon absolute"></div>
+                        <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="powerup absolute"></div>
+                    </div>
                 </div>
             </div>
-            <div class="box">
-                <div id="cube2"
-                    class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
-                    <div class="hexagon absolute"></div>
-                    <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="powerup absolute"></div>
+            <div class="box-in-bottom">
+                <div class="box">
+                    <div id="cube4"
+                        class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
+                        <div class="hexagon absolute"></div>
+                        <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="powerup absolute"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="box">
-                <div id="cube3"
-                    class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
-                    <div class="hexagon absolute"></div>
-                    <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="powerup absolute"></div>
+                <div class="box">
+                    <div id="cube5"
+                        class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
+                        <div class="hexagon absolute"></div>
+                        <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="powerup absolute"></div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div id="cube6"
+                        class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
+                        <div class="hexagon absolute"></div>
+                        <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
+                        <div class="powerup absolute"></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="box-in-bottom">
-            <div class="box">
-                <div id="cube4"
-                    class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
-                    <div class="hexagon absolute"></div>
-                    <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="powerup absolute"></div>
+        <div class="rules">
+            <div class=" content">
+                <h2 class="title-content">Thể lệ trò chơi</h2>
+                <div class="rule">
+                    <p>Người chơi được mở ngẫu nhiên một ô bất kì trong 6 ô. Chỉ được mở một lần. Phần thưởng của trò
+                        chơi bao gồm:+ Giảm 100K khi mua hàng tại Khóa vàng + Giảm 150k khi mua hàng tại Khóa Vàng. +
+                        Giảm 200K khi mua hàng tại Khóa Vàng. + Giảm 300K khi mua hàng tại Khóa Vàng. + Giảm 400K khi
+                        mua hàng tại Khóa Vàng - Lưu ý: Các mệnh giá giản giá của chương trình chỉ áp dụng cho sản phẩm
+                        trên 5 triệu đồng.</p>
+                    <p>Người chơi được mở ngẫu nhiên một ô bất kì trong 6 ô. Chỉ được mở một lần. Phần thưởng của trò
+                        chơi bao gồm:+ Giảm 100K khi mua hàng tại Khóa vàng + Giảm 150k khi mua hàng tại Khóa Vàng. +
+                        Giảm 200K khi mua hàng tại Khóa Vàng. + Giảm 300K khi mua hàng tại Khóa Vàng. + Giảm 400K khi
+                        mua hàng tại Khóa Vàng - Lưu ý: Các mệnh giá giản giá của chương trình chỉ áp dụng cho sản phẩm
+                        trên 5 triệu đồng.</p>
+                    <p>Người chơi được mở ngẫu nhiên một ô bất kì trong 6 ô. Chỉ được mở một lần. Phần thưởng của trò
+                        chơi bao gồm:+ Giảm 100K khi mua hàng tại Khóa vàng + Giảm 150k khi mua hàng tại Khóa Vàng. +
+                        Giảm 200K khi mua hàng tại Khóa Vàng. + Giảm 300K khi mua hàng tại Khóa Vàng. + Giảm 400K khi
+                        mua hàng tại Khóa Vàng - Lưu ý: Các mệnh giá giản giá của chương trình chỉ áp dụng cho sản phẩm
+                        trên 5 triệu đồng.</p>
+                    <p>Người chơi được mở ngẫu nhiên một ô bất kì trong 6 ô. Chỉ được mở một lần. Phần thưởng của trò
+                        chơi bao gồm:+ Giảm 100K khi mua hàng tại Khóa vàng + Giảm 150k khi mua hàng tại Khóa Vàng. +
+                        Giảm 200K khi mua hàng tại Khóa Vàng. + Giảm 300K khi mua hàng tại Khóa Vàng. + Giảm 400K khi
+                        mua hàng tại Khóa Vàng - Lưu ý: Các mệnh giá giản giá của chương trình chỉ áp dụng cho sản phẩm
+                        trên 5 triệu đồng.</p>
+                    <p>Người chơi được mở ngẫu nhiên một ô bất kì trong 6 ô. Chỉ được mở một lần. Phần thưởng của trò
+                        chơi bao gồm:+ Giảm 100K khi mua hàng tại Khóa vàng + Giảm 150k khi mua hàng tại Khóa Vàng. +
+                        Giảm 200K khi mua hàng tại Khóa Vàng. + Giảm 300K khi mua hàng tại Khóa Vàng. + Giảm 400K khi
+                        mua hàng tại Khóa Vàng - Lưu ý: Các mệnh giá giản giá của chương trình chỉ áp dụng cho sản phẩm
+                        trên 5 triệu đồng.</p>
+                    <p>Người chơi được mở ngẫu nhiên một ô bất kì trong 6 ô. Chỉ được mở một lần. Phần thưởng của trò
+                        chơi bao gồm:+ Giảm 100K khi mua hàng tại Khóa vàng + Giảm 150k khi mua hàng tại Khóa Vàng. +
+                        Giảm 200K khi mua hàng tại Khóa Vàng. + Giảm 300K khi mua hàng tại Khóa Vàng. + Giảm 400K khi
+                        mua hàng tại Khóa Vàng - Lưu ý: Các mệnh giá giản giá của chương trình chỉ áp dụng cho sản phẩm
+                        trên 5 triệu đồng.</p>
+                    <p>Người chơi được mở ngẫu nhiên một ô bất kì trong 6 ô. Chỉ được mở một lần. Phần thưởng của trò
+                        chơi bao gồm:+ Giảm 100K khi mua hàng tại Khóa vàng + Giảm 150k khi mua hàng tại Khóa Vàng. +
+                        Giảm 200K khi mua hàng tại Khóa Vàng. + Giảm 300K khi mua hàng tại Khóa Vàng. + Giảm 400K khi
+                        mua hàng tại Khóa Vàng - Lưu ý: Các mệnh giá giản giá của chương trình chỉ áp dụng cho sản phẩm
+                        trên 5 triệu đồng.</p>
+                    <p>Người chơi được mở ngẫu nhiên một ô bất kì trong 6 ô. Chỉ được mở một lần. Phần thưởng của trò
+                        chơi bao gồm:+ Giảm 100K khi mua hàng tại Khóa vàng + Giảm 150k khi mua hàng tại Khóa Vàng. +
+                        Giảm 200K khi mua hàng tại Khóa Vàng. + Giảm 300K khi mua hàng tại Khóa Vàng. + Giảm 400K khi
+                        mua hàng tại Khóa Vàng - Lưu ý: Các mệnh giá giản giá của chương trình chỉ áp dụng cho sản phẩm
+                        trên 5 triệu đồng.</p>
+                    <p>Người chơi được mở ngẫu nhiên một ô bất kì trong 6 ô. Chỉ được mở một lần. Phần thưởng của trò
+                        chơi bao gồm:+ Giảm 100K khi mua hàng tại Khóa vàng + Giảm 150k khi mua hàng tại Khóa Vàng. +
+                        Giảm 200K khi mua hàng tại Khóa Vàng. + Giảm 300K khi mua hàng tại Khóa Vàng. + Giảm 400K khi
+                        mua hàng tại Khóa Vàng - Lưu ý: Các mệnh giá giản giá của chương trình chỉ áp dụng cho sản phẩm
+                        trên 5 triệu đồng.</p>
                 </div>
             </div>
-            <div class="box">
-                <div id="cube5"
-                    class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
-                    <div class="hexagon absolute"></div>
-                    <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="powerup absolute"></div>
-                </div>
+            <div class="content">
+                <h2 class="title-content">Danh sách trúng thưởng</h2>
+                <table id="table-get-user" class="table table-dark table-bordered table-sm" cellspacing="0" width="98%"
+                    style="justify-content: center; ">
+                    <thead>
+                        <tr>
+                            <th class="th-sm">Thời gian
+                            </th>
+                            <th class="th-sm">Họ và tên
+                            </th>
+                            <th class="th-sm">Số điện thoại
+                            </th>
+                            <th class="th-sm">Nhận được
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+                        <tr>
+                            <td>16/10/2023</td>
+                            <td>Bảo1</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Thời gian
+                            </th>
+                            <th>Họ và tên
+                            </th>
+                            <th>Số điện thoại
+                            </th>
+                            <th>Nhận được
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
-            <div class="box">
-                <div id="cube6"
-                    class="box-cube h-40 w-40 relative flex justify-center items-center cursor-pointer shakeButton">
-                    <div class="hexagon absolute"></div>
-                    <div class="cube back h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube top h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube left h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="cube right h-40 w-40 absolute top-0 left-0"></div>
-                    <div class="powerup absolute"></div>
-                </div>
+        </div>
+        <div class="info-game">
+            <h2 class="title-content">Thông tin trò chơi</h2>
+            <div class="information">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas facere dolores, voluptatem eius unde
+                    neque! Quidem sint eum aliquid, sunt nam omnis commodi libero velit eos quos ullam maxime possimus.
+                </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas facere dolores, voluptatem eius unde
+                    neque! Quidem sint eum aliquid, sunt nam omnis commodi libero velit eos quos ullam maxime possimus.
+                </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas facere dolores, voluptatem eius unde
+                    neque! Quidem sint eum aliquid, sunt nam omnis commodi libero velit eos quos ullam maxime possimus.
+                </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas facere dolores, voluptatem eius unde
+                    neque! Quidem sint eum aliquid, sunt nam omnis commodi libero velit eos quos ullam maxime possimus.
+                </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas facere dolores, voluptatem eius unde
+                    neque! Quidem sint eum aliquid, sunt nam omnis commodi libero velit eos quos ullam maxime possimus.
+                </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas facere dolores, voluptatem eius unde
+                    neque! Quidem sint eum aliquid, sunt nam omnis commodi libero velit eos quos ullam maxime possimus.
+                </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas facere dolores, voluptatem eius unde
+                    neque! Quidem sint eum aliquid, sunt nam omnis commodi libero velit eos quos ullam maxime possimus.
+                </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas facere dolores, voluptatem eius unde
+                    neque! Quidem sint eum aliquid, sunt nam omnis commodi libero velit eos quos ullam maxime possimus.
+                </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas facere dolores, voluptatem eius unde
+                    neque! Quidem sint eum aliquid, sunt nam omnis commodi libero velit eos quos ullam maxime possimus.
+                </p>
             </div>
         </div>
     </div>

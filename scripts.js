@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+
   // lấy tất cả các box ra
   const cubes = document.querySelectorAll(".box-cube");
   const transitionTime = "750ms";
@@ -62,6 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
       showCoupon();
       const getGift = document.querySelector(".popup-get-gift");
       getGift.style.display = "none";
+      //lưu IP vào local storage để so sánh, tránh để người dùng nhập đi nhập lại nhiều lần
+      if (typeof (Storage) !== "undefined") {
+        getIpAddress(function (ipAddress) {
+          localStorage.setItem("userIpAddress", ipAddress);
+        });
+      }
     }
   })
 
@@ -293,127 +301,225 @@ document.addEventListener("DOMContentLoaded", function () {
     closeShowCoupon.style.display = "none"
   }
 
+  function getIpAddress(callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://api.ipify.org?format=json", true);
+
+    xhr.onload = function () {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        const response = JSON.parse(xhr.responseText);
+        const ipAddress = response.ip;
+        callback(ipAddress);
+      }
+    };
+
+    xhr.send();
+  }
+
+
   //hàm kiểm tra xem biến giá trị random value và id của box có trong localstorage hay không
   // nếu có thì ta sẽ mở sẵn giá trị đó khi tải trang
   // nếu không thì mới cho người dùng mở hộp
-  if (localStorage.getItem("randomValue") && localStorage.getItem("cubeId")) {
-    const randomValue = localStorage.getItem("randomValue");
-    const cubeId = localStorage.getItem("cubeId");
-    const cubeElement = document.getElementById(cubeId);
-    let isOpen = false;
 
-    cubes.forEach(function (cube) {
-      const ctop = cube.querySelector(".top");
-      const cleft = cube.querySelector(".left");
-      const cright = cube.querySelector(".right");
-      const glow = cube.querySelector(".hexagon");
-      const powerup = cube.querySelector(".powerup");
+  if (localStorage.getItem("userIpAddress")) {
+    const savedIpAddress = localStorage.getItem("userIpAddress");
+    getIpAddress(function (currentIpAddress) {
+      if (savedIpAddress === currentIpAddress) {
+        const randomValue = localStorage.getItem("randomValue");
+        const cubeId = localStorage.getItem("cubeId");
+        const cubeElement = document.getElementById(cubeId);
+        let isOpen = false;
 
-      ctop.style.transition = `all ${transitionTime}`;
-      cleft.style.transition = `all ${transitionTime}`;
-      cright.style.transition = `all ${transitionTime}`;
-      powerup.style.transition = `all ${transitionTime}`;
-      glow.style.transition = `all ${transitionTime}`;
+        cubes.forEach(function (cube) {
+          const ctop = cube.querySelector(".top");
+          const cleft = cube.querySelector(".left");
+          const cright = cube.querySelector(".right");
+          const glow = cube.querySelector(".hexagon");
+          const powerup = cube.querySelector(".powerup");
 
-      //hàm kiểm tra xem đã có box nào mở chưa nếu có add class không cho mở nữa
-      function disableOtherCubes() {
-        cubes.forEach(function (otherCube) {
-          if (otherCube !== cube) {
-            otherCube.classList.add("no-click");
-          }
-        });
-      }
-      function openCube(cube) {
-        const cubePowerup = cube.querySelector(".powerup");
-        cubePowerup.style.backgroundImage = `url(${randomValue})`;
-        document.getElementById("img-sale").setAttribute("src", randomValue);
-        changeVar(cube, "rgba(69,185,251,0.33)");
+          ctop.style.transition = `all ${transitionTime}`;
+          cleft.style.transition = `all ${transitionTime}`;
+          cright.style.transition = `all ${transitionTime}`;
+          powerup.style.transition = `all ${transitionTime}`;
+          glow.style.transition = `all ${transitionTime}`;
 
-        ctop.style.transform = "translateY(-3rem)";
-        cleft.style.transform = "translateX(-3rem)";
-        cright.style.transform = "translateX(3rem)";
-        ctop.style.opacity = 0.1;
-        cleft.style.opacity = 0.1;
-        cright.style.opacity = 0.1;
-        glow.style.opacity = 0.5;
-        powerup.style.opacity = 1;
-        cube.style.animationPlayState = "paused";
-        powerup.style.zIndex = 10;
-        powerup.style.height = "250px";
-        powerup.style.width = "250px";
-      }
-      if (!isOpen) {
-        disableOtherCubes(); //không cho mở box khi có box đã mở
-        openCube(cubeElement); // mở box với giá trị đã lưu trong localstogare
-        isOpen = true;
-        const getGift = document.querySelector(".popup-get-gift"); // hiện button nhận thưởng
-        getGift.style.display = "block";
-        getGift.addEventListener("click", function () {
-          showPopupGift();
-        });
-      }
-    })
-
-    // khi không tồn tại giá trị nào trong local storage
-  } else {
-    cubes.forEach(function (cube) {
-      const ctop = cube.querySelector(".top");
-      const cleft = cube.querySelector(".left");
-      const cright = cube.querySelector(".right");
-      const glow = cube.querySelector(".hexagon");
-      const powerup = cube.querySelector(".powerup");
-
-      ctop.style.transition = `all ${transitionTime}`;
-      cleft.style.transition = `all ${transitionTime}`;
-      cright.style.transition = `all ${transitionTime}`;
-      powerup.style.transition = `all ${transitionTime}`;
-      glow.style.transition = `all ${transitionTime}`;
-      let isOpen = false;
-      function disableOtherCubes() {
-        cubes.forEach(function (otherCube) {
-          if (otherCube !== cube) {
-            otherCube.classList.add("no-click");
-          }
-        });
-      }
-      function openCube(cube) {
-        award(cube); //random cho các voucher và lấy hình ản
-        ctop.style.transform = "translateY(-3rem)";
-        cleft.style.transform = "translateX(-3rem)";
-        cright.style.transform = "translateX(3rem)";
-        ctop.style.opacity = 0.1;
-        cleft.style.opacity = 0.1;
-        cright.style.opacity = 0.1;
-        glow.style.opacity = 0.5;
-        powerup.style.opacity = 1;
-        cube.style.animationPlayState = "paused";
-        powerup.style.zIndex = 10;
-        powerup.style.height = "250px";
-        powerup.style.width = "250px";
-      }
-      cube.addEventListener("click", function () {
-        if (!isOpen) { // Kiểm tra xem cube có được mở hay không
-          cube.classList.add("shake");
-          disableOtherCubes();
-          setTimeout(function () {
-            cube.classList.remove("shake");
-            openCube(cube);
-            isOpen = true; // Đánh dấu cube đã được mở
-            showExplotion()
-            const cubeId = cube.getAttribute("id");
-            localStorage.setItem("cubeId", cubeId);
-            localStorage.setItem("randomValue", randomValue);
-            const getGift = document.querySelector(".btn-get-gift");
-            getGift.style.display = "block";
-            getGift.addEventListener("click", function () {
-              showPopupGift();
+          //hàm kiểm tra xem đã có box nào mở chưa nếu có add class không cho mở nữa
+          function disableOtherCubes() {
+            cubes.forEach(function (otherCube) {
+              if (otherCube !== cube) {
+                otherCube.classList.add("no-click");
+              }
             });
-          }, 2000);
-          setTimeout(function () {
-            showPopupGift();
-          }, 4000);
+          }
+          function openCube(cube) {
+            const cubePowerup = cube.querySelector(".powerup");
+            cubePowerup.style.backgroundImage = `url(${randomValue})`;
+            document.getElementById("img-sale").setAttribute("src", randomValue);
+            changeVar(cube, "rgba(69,185,251,0.33)");
+
+            ctop.style.transform = "translateY(-3rem)";
+            cleft.style.transform = "translateX(-3rem)";
+            cright.style.transform = "translateX(3rem)";
+            ctop.style.opacity = 0.1;
+            cleft.style.opacity = 0.1;
+            cright.style.opacity = 0.1;
+            glow.style.opacity = 0.5;
+            powerup.style.opacity = 1;
+            cube.style.animationPlayState = "paused";
+            powerup.style.zIndex = 10;
+            powerup.style.height = "250px";
+            powerup.style.width = "250px";
+          }
+          if (!isOpen) {
+            disableOtherCubes(); //không cho mở box khi có box đã mở
+            openCube(cubeElement); // mở box với giá trị đã lưu trong localstogare
+            isOpen = true;
+          }
+        })
+      }
+    });
+  } else {
+    if (localStorage.getItem("randomValue") && localStorage.getItem("cubeId")) {
+      const randomValue = localStorage.getItem("randomValue");
+      const cubeId = localStorage.getItem("cubeId");
+      const cubeElement = document.getElementById(cubeId);
+      let isOpen = false;
+
+      cubes.forEach(function (cube) {
+        const ctop = cube.querySelector(".top");
+        const cleft = cube.querySelector(".left");
+        const cright = cube.querySelector(".right");
+        const glow = cube.querySelector(".hexagon");
+        const powerup = cube.querySelector(".powerup");
+
+        ctop.style.transition = `all ${transitionTime}`;
+        cleft.style.transition = `all ${transitionTime}`;
+        cright.style.transition = `all ${transitionTime}`;
+        powerup.style.transition = `all ${transitionTime}`;
+        glow.style.transition = `all ${transitionTime}`;
+
+        //hàm kiểm tra xem đã có box nào mở chưa nếu có add class không cho mở nữa
+        function disableOtherCubes() {
+          cubes.forEach(function (otherCube) {
+            if (otherCube !== cube) {
+              otherCube.classList.add("no-click");
+            }
+          });
         }
-      });
-    })
+        function openCube(cube) {
+          const cubePowerup = cube.querySelector(".powerup");
+          cubePowerup.style.backgroundImage = `url(${randomValue})`;
+          document.getElementById("img-sale").setAttribute("src", randomValue);
+          changeVar(cube, "rgba(69,185,251,0.33)");
+          ctop.style.transform = "translateY(-3rem)";
+          cleft.style.transform = "translateX(-3rem)";
+          cright.style.transform = "translateX(3rem)";
+          ctop.style.opacity = 0.1;
+          cleft.style.opacity = 0.1;
+          cright.style.opacity = 0.1;
+          glow.style.opacity = 0.5;
+          powerup.style.opacity = 1;
+          cube.style.animationPlayState = "paused";
+          powerup.style.zIndex = 10;
+          powerup.style.height = "250px";
+          powerup.style.width = "250px";
+        }
+        if (!isOpen) {
+          disableOtherCubes(); //không cho mở box khi có box đã mở
+          openCube(cubeElement); // mở box với giá trị đã lưu trong localstogare
+          isOpen = true;
+          const getGift = document.querySelector(".popup-get-gift"); // hiện button nhận thưởng
+          getGift.style.display = "block";
+          getGift.addEventListener("click", function () {
+            showPopupGift();
+          });
+        }
+      })
+
+      // khi không tồn tại giá trị nào trong local storage
+    } else {
+      cubes.forEach(function (cube) {
+        const ctop = cube.querySelector(".top");
+        const cleft = cube.querySelector(".left");
+        const cright = cube.querySelector(".right");
+        const glow = cube.querySelector(".hexagon");
+        const powerup = cube.querySelector(".powerup");
+
+        ctop.style.transition = `all ${transitionTime}`;
+        cleft.style.transition = `all ${transitionTime}`;
+        cright.style.transition = `all ${transitionTime}`;
+        powerup.style.transition = `all ${transitionTime}`;
+        glow.style.transition = `all ${transitionTime}`;
+        let isOpen = false;
+        function disableOtherCubes() {
+          cubes.forEach(function (otherCube) {
+            if (otherCube !== cube) {
+              otherCube.classList.add("no-click");
+            }
+          });
+        }
+        function openCube(cube) {
+          award(cube); //random cho các voucher và lấy hình ản
+          ctop.style.transform = "translateY(-3rem)";
+          cleft.style.transform = "translateX(-3rem)";
+          cright.style.transform = "translateX(3rem)";
+          ctop.style.opacity = 0.1;
+          cleft.style.opacity = 0.1;
+          cright.style.opacity = 0.1;
+          glow.style.opacity = 0.5;
+          powerup.style.opacity = 1;
+          cube.style.animationPlayState = "paused";
+          powerup.style.zIndex = 10;
+          powerup.style.height = "250px";
+          powerup.style.width = "250px";
+        }
+        cube.addEventListener("click", function () {
+          if (!isOpen) { // Kiểm tra xem cube có được mở hay không
+            cube.classList.add("shake");
+            disableOtherCubes();
+            setTimeout(function () {
+              cube.classList.remove("shake");
+              openCube(cube);
+              isOpen = true; // Đánh dấu cube đã được mở
+              showExplotion()
+              const cubeId = cube.getAttribute("id");
+
+              localStorage.setItem("cubeId", cubeId);
+              localStorage.setItem("randomValue", randomValue);
+              const getGift = document.querySelector(".popup-get-gift");
+              getGift.style.display = "block";
+              getGift.addEventListener("click", function () {
+                showPopupGift();
+              });
+            }, 2000);
+            setTimeout(function () {
+              showPopupGift();
+            }, 4000);
+          }
+        });
+      })
+    }
   }
+
+  $(document).ready(function () {
+
+    $('#table-get-user').DataTable({
+      "language": {
+        "lengthMenu": "Hiển thị _MENU_ dòng",
+        "zeroRecords": "Không tìm thấy kết quả",
+        "info": "Hiển thị _START_ đến _END_ trong tổng số _TOTAL_ dòng",
+        "infoEmpty": "Hiển thị 0 đến 0 trong tổng số 0 dòng",
+        "infoFiltered": "(được lọc từ _MAX_ tổng dòng)",
+        "search": "Tìm kiếm:",
+        "paginate": {
+          "first": "Đầu",
+          "previous": "<",
+          "next": ">",
+          "last": "Cuối"
+        }
+      }
+    });
+  });
+
 });
+

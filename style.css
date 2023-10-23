@@ -17,19 +17,33 @@ body {
   flex-direction: column;
   background-image: url("background.png");
   overflow-x: hidden;
+  height: 3000px;
+  margin-bottom: 30px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  /* Set your preferred scrollbar width */
+}
+
+/* Style for the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: #777;
+  /* Set your preferred thumb color */
+  border-radius: 6px;
+  /* Set your preferred thumb radius */
+}
+
+/* Hover style for the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Set your preferred hover color */
 }
 
 .header-title {
+  margin-top: 50px;
   display: flex;
   width: 100%;
-  padding: 0 10px 20px 10px;
-  border-bottom: 1px solid rgb(37, 37, 37);
-  margin-bottom: 60px;
-
-}
-
-.logo {
-  width: 10%;
 }
 
 .logo-img {
@@ -38,22 +52,26 @@ body {
 }
 
 .title {
-  margin-top: 30px;
-  width: 93%;
+
   display: flex;
   justify-content: center;
   color: gold;
+  padding: 20px;
+  border: 1px solid rgb(37, 37, 37);
+  margin-bottom: 30px;
+  border-radius: 10px;
+  background-color: #000000;
 }
 
 h1 {
   font-size: xxx-large;
-  padding-right: 7%;
+
 }
 
 header {
 
-  width: 100vw;
-  margin: 30px 0;
+  width: 90%;
+  margin-top: 30px;
   justify-content: center;
 }
 
@@ -63,7 +81,7 @@ header {
 }
 
 .tab-menu {
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
 }
@@ -77,13 +95,15 @@ header {
   background-color: rgba(87, 87, 87, 0.3);
 }
 
-a {
-  text-decoration: none;
+
+.title-tab {
+  text-decoration: none !important;
   text-align: center;
-  color: aliceblue;
+  color: snow !important;
   font-weight: 600;
   font-size: x-large;
 }
+
 
 .box-cube {
   width: 250px;
@@ -120,6 +140,10 @@ a {
   border-top: 46.19px solid var(--glow);
 }
 
+.game {
+  width: 70%;
+}
+
 .box {
   width: 300px;
   height: 300px;
@@ -128,14 +152,14 @@ a {
 .box-in-top {
   display: flex;
   justify-content: space-between;
-  width: 70%;
+  width: 100%;
   margin-bottom: 70px;
 }
 
 .box-in-bottom {
   display: flex;
   justify-content: space-between;
-  width: 70%;
+  width: 100%;
   margin-bottom: 30px;
 }
 
@@ -201,11 +225,14 @@ a {
 }
 
 .main {
-  width: 100%;
+  width: 90%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  margin-top: 75px;
-
+  padding-top: 75px;
+  border: 1px solid rgb(37, 37, 37);
+  padding-bottom: 50px;
+  margin-bottom: 20px !important;
 }
 
 .shake {
@@ -331,6 +358,7 @@ a {
 h2 {
   text-align: center;
   font-size: 33px;
+
 }
 
 #img-sale {
@@ -455,4 +483,93 @@ input {
 .btn-get-data:hover,
 .btn-get-data:active {
   background-color: #eeae65;
+}
+
+.rules {
+  margin-top: 30px;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.content {
+  width: 49%;
+  border: 3px solid rgb(37, 37, 37);
+  border-radius: 10px;
+  background-color: rgb(182 180 180 / 2%);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.info-game {
+  margin-top: 15px;
+  width: 89%;
+  border: 3px solid rgb(37, 37, 37);
+  border-radius: 10px;
+  background-color: rgb(182 180 180 / 2%);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  max-height: 700px;
+  color: snow;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.title-content {
+  color: snow;
+  padding: 10px;
+}
+
+.rule {
+  max-height: 500px;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 5px;
+  color: snow;
+}
+
+/* .info-game {
+  max-height: 500px;
+ 
+  padding: 5px;
+  color: snow;
+} */
+
+#table-get-user_wrapper {
+  width: 100%;
+  color: snow;
+  max-height: 500px;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+.paginate_button {
+  display: none;
+}
+
+#table-get-user_previous {
+  display: block;
+  margin: 0;
+}
+
+#table-get-user_next {
+  display: block;
+  margin: 0
+}
+
+.page-link {
+  color: rgb(90, 90, 90);
+  font-weight: bold;
+}
+
+
+.slider {
+  margin-top: 30px;
+  padding: 10px;
+  width: 90%;
+  border: 1px solid rgb(37, 37, 37);
+  border-radius: 10px;
 }
