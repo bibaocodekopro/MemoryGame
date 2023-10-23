@@ -501,5 +501,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
 });
+
 
