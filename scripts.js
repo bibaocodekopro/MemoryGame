@@ -7,12 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Phần này random các hình theo mảng
   const randomSale = {
-    "1": "sale-100k.png",
-    "2": "sale-150k.png",
-    "3": "sale-200k.png",
-    "4": "sale-250k.png",
-    "5": "sale-300k.png",
-    "6": "sale-100k.png",
+    "1": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
+    "2": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-150k-1698051402.png?_t=1698051402",
+    "3": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-200k-1698051402.png?_t=1698051403",
+    "4": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-250k-1698051403.png?_t=1698051403",
+    "5": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
+    "6": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
   };
   // tạo sẵn giá trị random để lưu vào local storage khi người dùng đã mở hộp rồi
   let randomValue;
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
       navigator.clipboard.writeText(couponCode)
         .then(function () {
           var buttonCopy = document.querySelector(".img-copy");
-          buttonCopy.src = "done-icon.png";
+          buttonCopy.src = "https://dev.khoavang.vn/resources/uploads/mistery-box/done-icon-1698051402.png?_t=1698051402";
           var couponShow = document.querySelector(".Coupon-show");
           couponShow.style.background = "rgb(167 236 136)";
 

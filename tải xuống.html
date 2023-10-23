@@ -35,16 +35,16 @@
     <header>
         <div class="tab-menu">
             <div class="tab">
-                <a class="title-tab" href="#game">Hộp quà bí mật</a>
+                <a class="title-tab" href="">Hộp quà bí mật</a>
             </div>
             <div class="tab">
-                <a class="title-tab" href="#rules">Thể lệ trò chơi</a>
+                <a class="title-tab" href="">Thể lệ trò chơi</a>
             </div>
             <div class="tab">
-                <a class="title-tab" href="#table-user">Danh sách trúng thưởng</a>
+                <a class="title-tab" href="">Danh sách trúng thưởng</a>
             </div>
             <div class="tab">
-                <a class="title-tab" href="#info-game">Thông tin game</a>
+                <a class="title-tab" href="">Thông tin game</a>
             </div>
         </div>
         <div class="slider">
@@ -69,16 +69,16 @@
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
                     data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Trở về</span>
+                    <span class="visually-hidden">Previous</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
                     data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Tiếp tục</span>
+                    <span class="visually-hidden">Next</span>
                 </button>
             </div>
         </div>
-        <div class="header-title" id="game">
+        <div class="header-title">
 
             <div class="title">
                 <h1>Hộp Quà Bí Mật</h1>
@@ -162,7 +162,7 @@
                 </div>
             </div>
         </div>
-        <div class="rules" id="rules">
+        <div class="rules">
             <div class=" content">
                 <h2 class="title-content">Thể lệ trò chơi</h2>
                 <div class="rule">
@@ -213,7 +213,7 @@
                         trên 5 triệu đồng.</p>
                 </div>
             </div>
-            <div class="content" id="table-user">
+            <div class="content">
                 <h2 class="title-content">Danh sách trúng thưởng</h2>
                 <table id="table-get-user" class="table table-dark table-bordered table-sm" cellspacing="0" width="98%"
                     style="justify-content: center; ">
@@ -596,7 +596,7 @@
                 </table>
             </div>
         </div>
-        <div class="info-game" id="info-game">
+        <div class="info-game">
             <h2 class="title-content">Thông tin trò chơi</h2>
             <div class="information">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas facere dolores, voluptatem eius unde
@@ -629,50 +629,93 @@
             </div>
         </div>
     </div>
-</body>
-<div class="popup" id="popupShowGift">
-    <div class="popup-content">
-        <span class="close" onclick="">&times;</span>
-        <div class="content-get-sale">
-            <h2>Chúc mừng bạn đã trúng Voucher</h2>
-            <img url="" alt="" id="img-sale">
-            <button onclick="" type="button" class="btn-get-sale">Nhận thưởng ngay !</button>
-        </div>
-    </div>
-</div>
-<div class="popup-get-gift">
-    <button class="btn-get-gift" id="">Nhận thưởng ngay</button>
-</div>
-<div class="popup" id="formDataUser">
-    <div class="popup-content">
-        <span class="close closeGetData">&times;</span>
-        <h2>Nhập thông tin của bạn để nhận thưởng</h2>
-        <p id="errorMessage"></p>
-        <form id="myForm" class="data-user">
-            <label for="fullName">Họ và tên</label>
-            <input type="text" class="fullName" id="fullName" value="" required>
-            <label for="phoneNumber">Số điện thoại</label>
-            <input type="text" class="phoneNumber" id="phoneNumber" value="" required>
-            <button type="button" class="btn-get-data">Nhận thưởng</button>
-        </form>
-    </div>
-</div>
-<div class="popup" id="popupShowCoupon">
-    <div class="popup-content">
-        <span class="close closeShowCoupon">&times;</span>
-        <div class="content-get-coupon">
-            <h2>Cảm ơn bạn đã tham gia chương trình</h2>
-            <label for="showCoupon" class="title-show-coupon">Đây là mã của bạn:</label>
-            <div class="Coupon-show">
-                <p class="coupon" id="coupon">1GSC421FF</p>
-                <div alt="" class="copy-icon" id="copyButton">
-                    <img src="https://dev.khoavang.vn/resources/uploads/mistery-box/copy-text-icon-1698051402.png?_t=1698051402"
-                        alt="" class="img-copy">
-
-                </div>
+    <div class="popup" id="popupShowGift">
+        <div class="popup-content">
+            <span class="close" onclick="">&times;</span>
+            <div class="content-get-sale">
+                <h2>Chúc mừng bạn đã trúng Voucher</h2>
+                <img url="" alt="" id="img-sale">
+                <button onclick="" type="button" class="btn-get-sale">Nhận thưởng ngay !</button>
             </div>
         </div>
     </div>
-</div>
+    <div class="popup-get-gift">
+        <button class="btn-get-gift" id="">Nhận thưởng ngay</button>
+    </div>
+    <div class="popup" id="formDataUser">
+        <div class="popup-content">
+            <span class="close closeGetData">&times;</span>
+            <h2>Nhập thông tin của bạn để nhận thưởng</h2>
+            <p id="errorMessage"></p>
+            <form id="myForm" class="data-user">
+                <label for="fullName">Họ và tên</label>
+                <input type="text" class="fullName" id="fullName" value="" required>
+                <label for="phoneNumber">Số điện thoại</label>
+                <input type="text" class="phoneNumber" id="phoneNumber" value="" required>
+                <button type="button" class="btn-get-data">Nhận thưởng</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup" id="popupShowCoupon">
+        <div class="popup-content">
+            <span class="close closeShowCoupon">&times;</span>
+            <div class="content-get-coupon">
+                <h2>Cảm ơn bạn đã tham gia chương trình</h2>
+                <label for="showCoupon" class="title-show-coupon">Đây là mã của bạn:</label>
+                <div class="Coupon-show">
+                    <p class="coupon" id="coupon">1GSC421FF</p>
+                    <div alt="" class="copy-icon" id="copyButton">
+                        <img src="copy-text-icon.png" alt="" class="img-copy">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <script>
+
+    </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+
 
 </html>
