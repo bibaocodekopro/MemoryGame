@@ -20,7 +20,7 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/background-1698051402.png?_t=1698051402");
+  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/back-ground-1698139583.png?_t=1698139583");
   overflow-x: hidden;
 
   margin-bottom: 30px;
@@ -44,6 +44,167 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
   /* Set your preferred hover color */
+}
+
+.intro,
+.intro a {
+  color: #fff;
+
+}
+
+/* customizable snowflake styling */
+.snowflake {
+  color: #fff;
+  font-size: 1em;
+  font-family: Arial;
+  text-shadow: 0 0 1px #000;
+}
+
+@-webkit-keyframes snowflakes-fall {
+  0% {
+    top: -10%
+  }
+
+  100% {
+    top: 100%
+  }
+}
+
+@-webkit-keyframes snowflakes-shake {
+  0% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px)
+  }
+
+  50% {
+    -webkit-transform: translateX(80px);
+    transform: translateX(80px)
+  }
+
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px)
+  }
+}
+
+@keyframes snowflakes-fall {
+  0% {
+    top: -10%
+  }
+
+  100% {
+    top: 100%
+  }
+}
+
+@keyframes snowflakes-shake {
+  0% {
+    transform: translateX(0px)
+  }
+
+  50% {
+    transform: translateX(80px)
+  }
+
+  100% {
+    transform: translateX(0px)
+  }
+}
+
+.snowflake {
+  position: fixed;
+  top: -10%;
+  z-index: 9999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+  -webkit-animation-name: snowflakes-fall, snowflakes-shake;
+  -webkit-animation-duration: 10s, 3s;
+  -webkit-animation-timing-function: linear, ease-in-out;
+  -webkit-animation-iteration-count: infinite, infinite;
+  -webkit-animation-play-state: running, running;
+  animation-name: snowflakes-fall, snowflakes-shake;
+  animation-duration: 10s, 3s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-play-state: running, running
+}
+
+.snowflake:nth-of-type(0) {
+  left: 1%;
+  -webkit-animation-delay: 0s, 0s;
+  animation-delay: 0s, 0s
+}
+
+.snowflake:nth-of-type(1) {
+  left: 10%;
+  -webkit-animation-delay: 1s, 1s;
+  animation-delay: 1s, 1s
+}
+
+.snowflake:nth-of-type(2) {
+  left: 20%;
+  -webkit-animation-delay: 6s, .5s;
+  animation-delay: 6s, .5s
+}
+
+.snowflake:nth-of-type(3) {
+  left: 30%;
+  -webkit-animation-delay: 4s, 2s;
+  animation-delay: 4s, 2s
+}
+
+.snowflake:nth-of-type(4) {
+  left: 40%;
+  -webkit-animation-delay: 2s, 2s;
+  animation-delay: 2s, 2s
+}
+
+.snowflake:nth-of-type(5) {
+  left: 50%;
+  -webkit-animation-delay: 8s, 3s;
+  animation-delay: 8s, 3s
+}
+
+.snowflake:nth-of-type(6) {
+  left: 60%;
+  -webkit-animation-delay: 6s, 2s;
+  animation-delay: 6s, 2s
+}
+
+.snowflake:nth-of-type(7) {
+  left: 70%;
+  -webkit-animation-delay: 2.5s, 1s;
+  animation-delay: 2.5s, 1s
+}
+
+.snowflake:nth-of-type(8) {
+  left: 80%;
+  -webkit-animation-delay: 1s, 0s;
+  animation-delay: 1s, 0s
+}
+
+.snowflake:nth-of-type(9) {
+  left: 90%;
+  -webkit-animation-delay: 3s, 1.5s;
+  animation-delay: 3s, 1.5s
+}
+
+/* Demo Purpose Only*/
+.demo {
+  font-family: 'Raleway', sans-serif;
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.demo a {
+  font-family: 'Raleway', sans-serif;
+  color: #000;
 }
 
 .popup {
@@ -76,7 +237,7 @@ body {
   border: 1px solid rgb(37, 37, 37);
   margin-bottom: 30px;
   border-radius: 10px;
-  background-color: #000000;
+
 }
 
 h1 {
@@ -91,24 +252,15 @@ header {
   justify-content: center;
 }
 
-.tab-menu {
-  display: flex;
-  width: 100vw;
+
+.information {
+  padding-left: 20px;
 }
 
 .tab-menu {
   width: 100%;
   display: flex;
   justify-content: space-around;
-}
-
-.tab {
-  width: 20%;
-  padding: 10px;
-  border: 2px solid rgb(64, 63, 63);
-  display: flex;
-  border-radius: 10px;
-  background-color: rgba(87, 87, 87, 0.3);
 }
 
 
@@ -118,6 +270,90 @@ header {
   color: snow !important;
   font-weight: 600;
   font-size: x-large;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  min-width: 100px;
+  padding: 15px 20px;
+  font-family: 'Lobster', cursive;
+  font-size: 20px;
+  line-height: 20px;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+  background: #5e0d0c;
+  outline: none;
+  border-radius: 15px;
+  border: 1px solid #4c0300;
+  box-shadow:
+    inset 1px 1px 0px rgba(255, 255, 255, 0.25),
+    /* highlight */
+    inset 0 0 6px #a23227,
+    /* inner glow */
+    inset 0 80px 80px -40px #ac3223,
+    /* gradient */
+    1px 1px 3px rgba(0, 0, 0, 0.75);
+  /* shadow */
+
+  position: relative;
+  overflow: visible;
+  /* IE9 & 10 */
+  -webkit-transition: 500ms linear;
+  -moz-transition: 500ms linear;
+  -o-transition: 500ms linear;
+  transition: 500ms linear;
+}
+
+.title-tab::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -7px;
+  left: -3px;
+  right: 0;
+  height: 23px;
+  background: url("https://dev.khoavang.vn/resources/uploads/mistery-box/cloud-1698139583.png?_t=1698139583") no-repeat 0 0,
+    url("https://dev.khoavang.vn/resources/uploads/mistery-box/cloud2-1698139583.png?_t=1698139583") no-repeat 50% 0,
+    url("https://dev.khoavang.vn/resources/uploads/mistery-box/cloud3-1698139583.png?_t=1698139583") no-repeat 100% 0;
+
+}
+
+.title-tab:hover {
+  background: #a61715;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75), 0 0 40px #FFF;
+  box-shadow:
+    inset 1px 1px 0px rgba(255, 255, 255, 0.25),
+    /* highlight */
+    inset 0 0 6px #da3b2c,
+    /* inner glow */
+    inset 0 80px 80px -40px #dd4330,
+    /* gradient */
+    1px 1px 3px rgba(0, 0, 0, 0.75);
+  /* shadow */
+
+}
+
+.title-tab:focus {
+  outline: none;
+  /*FF*/
+}
+
+.title-tab:active {
+  box-shadow:
+    inset 1px 1px 0px rgba(255, 255, 255, 0.25),
+    /* highlight */
+    inset 0 0 6px #da3b2c,
+    /* inner glow */
+    inset 0 80px 80px -40px #dd4330,
+    /* gradient */
+    0px 1px 0px rgba(255, 255, 255, 0.25);
+  /* shadow */
+
+  -webkit-transition: 50ms linear;
+  -moz-transition: 50ms linear;
+  -o-transition: 50ms linear;
+  transition: 50ms linear;
 }
 
 
@@ -129,8 +365,8 @@ header {
 .hexagon {
   z-index: -2;
   position: relative;
-  width: 300px;
-  height: 150px;
+  width: 400px;
+  height: 200px;
   background-color: var(--glow);
   margin: 46.19px 0;
   filter: blur(50px);
@@ -180,14 +416,14 @@ header {
 }
 
 .back {
-  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/back-box-1698051402.png?_t=1698051402");
+  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/back-box-1698139583.png?_t=1698139583");
   background-size: cover;
   background-position: center;
   z-index: -1;
 }
 
 .top {
-  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/top-box-1698051403.png?_t=1698051403");
+  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/top-box-1698139583.png?_t=1698139583");
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -195,14 +431,14 @@ header {
 }
 
 .left {
-  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/left-box-1698051402.png?_t=1698051402");
+  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/left-box-1698139583.png?_t=1698139583");
   background-size: cover;
   background-position: center;
   z-index: 1;
 }
 
 .right {
-  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/right-box-1698051402.png?_t=1698051402");
+  background-image: url("https://dev.khoavang.vn/resources/uploads/mistery-box/right-box-1698139583.png?_t=1698139583");
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -246,7 +482,7 @@ header {
   display: flex;
   flex-direction: column;
   padding-top: 75px;
-  border: 1px solid rgb(37, 37, 37);
+
   padding-bottom: 50px;
   margin-bottom: 20px !important;
 }
@@ -377,6 +613,11 @@ h2 {
 
 }
 
+.title-popup {
+  text-align: center;
+  font-size: 33px;
+}
+
 #img-sale {
   width: 50%;
   height: 50%;
@@ -450,12 +691,12 @@ canvas {
 
 .btn-get-gift {
   color: rgb(233, 214, 101);
-  border: 1px solid rgb(233, 214, 101);
+  border: 2px solid rgb(54, 54, 54);
   padding: 5px;
   border-radius: 5px;
   background-color: black;
   transition: 0.3s;
-
+  font-weight: 600;
 }
 
 .btn-get-gift:hover {
@@ -510,9 +751,9 @@ input {
 
 .content {
   width: 49%;
-  border: 2px solid rgb(37, 37, 37);
+  border: 1px solid rgba(76, 76, 76, 0.524);
   border-radius: 10px;
-  background-color: rgb(182 180 180 / 2%);
+  background-color: #0000002e;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -521,16 +762,17 @@ input {
 .info-game {
   margin-top: 15px;
   width: 89%;
-  border: 2px solid rgb(37, 37, 37);
+  border: 1px solid rgba(76, 76, 76, 0.524);
   border-radius: 10px;
-  background-color: rgb(182 180 180 / 2%);
+  background-color: #0000002e;
   display: flex;
   flex-direction: column;
   padding: 10px;
-  max-height: 700px;
+  max-height: 750px;
   color: snow;
   overflow: hidden;
   overflow-y: auto;
+
 }
 
 .title-content {
@@ -585,9 +827,10 @@ input {
 .slider {
   margin-top: 30px;
   padding: 10px;
-  width: 90%;
-  border: 1px solid rgb(37, 37, 37);
+  width: 80%;
+
   border-radius: 10px;
+  background-color: #0000002e;
 }
 
 .comment {
@@ -615,6 +858,14 @@ input {
   .info-game {
     margin-top: 0;
     width: 86%;
+    margin-bottom: 30px;
+  }
+
+  .title-tab {
+    padding: 10px 15px;
+    font-family: 'Lobster', cursive;
+    font-size: 16px;
+    line-height: 15px;
   }
 }
 
@@ -668,6 +919,7 @@ input {
   .rules {
     margin-top: 50px;
   }
+
 }
 
 @media screen and (max-width:600px) {
@@ -724,16 +976,25 @@ input {
   }
 
   .main {
-    width: 95%;
+    width: 98%;
   }
 
   .popup-content {
     width: 350px;
   }
 
-  .title-tab {
-    font-size: 9px;
+  .tab {
+    margin: 0 10px;
   }
+
+  .title-tab {
+    padding: 10px 8px;
+    font-family: 'Lobster', cursive;
+    font-size: 12px;
+    line-height: 12px;
+
+  }
+
 
   .box {
     width: 110px;
@@ -812,6 +1073,24 @@ input {
   .popup-content {
     width: 270px;
   }
+
+
+
+  .tab {
+    margin: 0 9px;
+
+    width: 30px;
+  }
+
+  .title-tab {
+    width: 30px;
+    padding: 10px 0;
+    font-family: 'Lobster', cursive;
+    font-size: 5px;
+    line-height: 5px;
+
+  }
+
 }
 
 @media screen and (min-width:1920px) {}

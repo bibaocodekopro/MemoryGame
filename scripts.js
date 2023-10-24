@@ -4,14 +4,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const transitionTime = "750ms";
 
   // Phần này random các hình theo mảng
-  const randomSale = {
-    "100k1": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
-    "100k2": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
-    "100k3": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
-    "150k": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-150k-1698051402.png?_t=1698051402",
-    "200k": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-200k-1698051402.png?_t=1698051403",
-    "250k": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-250k-1698051403.png?_t=1698051403",
-  };
+  // const randomSale = {
+  //   "100k1": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
+  //   "100k2": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
+  //   "100k3": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
+  //   "150k": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-150k-1698051402.png?_t=1698051402",
+  //   "200k": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-200k-1698051402.png?_t=1698051403",
+  //   "250k": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-250k-1698051403.png?_t=1698051403",
+  // };
+  const randomSale = [
+    { money: 100000, percent: 8.89, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402' },
+    { money: 150000, percent: 13.33, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-150k-1698051402.png?_t=1698051402' },
+    { money: 200000, percent: 20, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-200k-1698051402.png?_t=1698051403' },
+    { money: 250000, percent: 27.78, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-250k-1698051403.png?_t=1698051403' },
+    { money: 300000, percent: 24.44, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-300k-1698051403.png?_t=1698051403' },
+    { money: 400000, percent: 5.56, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-400k-1698141687.png?_t=1698141687' },
+  ];
   // tạo sẵn giá trị random để lưu vào local storage khi người dùng đã mở hộp rồi
   let randomValue;
 
@@ -102,17 +110,32 @@ document.addEventListener("DOMContentLoaded", function () {
   function changeVar(cube, glow) {
     cube.style.setProperty("--glow", glow);
   }
+  // Hàm chọn ngẫu nhiên một mục từ mảng dựa trên phần trăm
+  function getRandomItemByPercent(arr) {
+    const totalPercent = arr.reduce((acc, item) => acc + item.percent, 0);
+    let randomValue = Math.random() * totalPercent;
 
+    for (const item of arr) {
+      if (randomValue < item.percent) {
+        return item;
+      }
+      randomValue -= item.percent;
+    }
+
+    // Trong trường hợp không tìm thấy giá trị (sai số hoặc percent lớn hơn tổng percent)
+    return null;
+  }
   function award(cube) {
     // Xử lý random ở đây
-    const keys = Object.keys(randomSale);
-    const randomKey = keys[Math.floor(Math.random() * keys.length)];
-    randomValue = randomSale[randomKey];
-    // Các phần tử powerup trong cube cụ thể
-    const cubePowerup = cube.querySelector(".powerup");
-    cubePowerup.style.backgroundImage = `url(${randomValue})`;
-    document.getElementById("img-sale").setAttribute("src", randomValue);
-    changeVar(cube, "rgba(69,185,251,0.33)");
+    randomValue = getRandomItemByPercent(randomSale).img;
+    if (randomValue) {
+      const cubePowerup = cube.querySelector(".powerup");
+      cubePowerup.style.backgroundImage = `url(${randomValue})`;
+      document.getElementById("img-sale").setAttribute("src", randomValue);
+      changeVar(cube, "rgba(69,185,251,0.33)");
+    } else {
+      console.log("Không tìm thấy giá trị phù hợp.");
+    }
   }
 
 
@@ -326,6 +349,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+  //đầu tiên ta điều kiện người này đã nhận voucher chưa (theo ip) nếu rồi thì hiện ra mã đã nhận
   if (localStorage.getItem("userIpAddress")) {
     const savedIpAddress = localStorage.getItem("userIpAddress");
     getIpAddress(function (currentIpAddress) {
@@ -369,6 +393,7 @@ document.addEventListener("DOMContentLoaded", function () {
         openCube(cubeElement); // mở cube với giá trị đã lưu trong local storage
       }
     });
+    //ta kiểm tra xem người mã đã mở chưa nếu mở rồi mà chưa nhận voucher thì hiện nút cho ngta nhận thưởng
   } else {
     if (localStorage.getItem("randomValue") && localStorage.getItem("cubeId")) {
       const randomValue = localStorage.getItem("randomValue");
@@ -415,7 +440,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
 
-      // khi không tồn tại giá trị nào trong local storage
+      // nếu người dùng chưa mở cái nào và chưa nhận cái nào thì cho họ mở mới.
     } else {
       cubes.forEach(function (cube) {
         const ctop = cube.querySelector(".top");
@@ -481,7 +506,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
     }
   }
-
+  // chỉnh sửa form bootstrap lại tiếng việt
   $(document).ready(function () {
 
     $('#table-get-user').DataTable({
