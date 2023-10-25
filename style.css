@@ -237,7 +237,7 @@ body {
   border: 1px solid rgb(37, 37, 37);
   margin-bottom: 30px;
   border-radius: 10px;
-
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 h1 {
@@ -276,7 +276,7 @@ header {
   box-sizing: border-box;
   min-width: 100px;
   padding: 15px 20px;
-  font-family: 'Lobster', cursive;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 20px;
   line-height: 20px;
   text-decoration: none;
@@ -337,23 +337,6 @@ header {
 .title-tab:focus {
   outline: none;
   /*FF*/
-}
-
-.title-tab:active {
-  box-shadow:
-    inset 1px 1px 0px rgba(255, 255, 255, 0.25),
-    /* highlight */
-    inset 0 0 6px #da3b2c,
-    /* inner glow */
-    inset 0 80px 80px -40px #dd4330,
-    /* gradient */
-    0px 1px 0px rgba(255, 255, 255, 0.25);
-  /* shadow */
-
-  -webkit-transition: 50ms linear;
-  -moz-transition: 50ms linear;
-  -o-transition: 50ms linear;
-  transition: 50ms linear;
 }
 
 
@@ -721,6 +704,17 @@ input {
   margin-bottom: 5%;
   border-radius: 10px;
   padding: 10px;
+
+}
+
+.fullName {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+  font-size: 24px;
+}
+
+.phoneNumber {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+  font-size: 24px;
 }
 
 .btn-get-data {
@@ -863,7 +857,7 @@ input {
 
   .title-tab {
     padding: 10px 15px;
-    font-family: 'Lobster', cursive;
+
     font-size: 16px;
     line-height: 15px;
   }
@@ -989,7 +983,6 @@ input {
 
   .title-tab {
     padding: 10px 8px;
-    font-family: 'Lobster', cursive;
     font-size: 12px;
     line-height: 12px;
 
@@ -1085,7 +1078,6 @@ input {
   .title-tab {
     width: 30px;
     padding: 10px 0;
-    font-family: 'Lobster', cursive;
     font-size: 5px;
     line-height: 5px;
 

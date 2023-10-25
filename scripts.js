@@ -44,17 +44,13 @@ document.addEventListener("DOMContentLoaded", function () {
   })
   const btnGetData = document.querySelector(".btn-get-data");
   btnGetData.addEventListener("click", function () {
-    var fullName = document.getElementById("fullName").value;
+    //var fullName = document.getElementById("fullName").value;
     var phoneNumber = document.getElementById("phoneNumber").value;
 
-    var fullNameRegex = /^[A-Za-z\s]+$/;
+
     var phoneRegex = /^\d{10}$/;
 
     var errorMessage = "";
-
-    if (!fullName.match(fullNameRegex)) {
-      errorMessage += "Họ và tên không hợp lệ. </br>";
-    }
 
     if (!phoneNumber.match(phoneRegex)) {
       errorMessage += "Số điện thoại không hợp lệ. Số điện thoại phải có 10 chữ số.";
@@ -78,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   })
-
 
   // Xử lý nút copy coupon cho người dùng
   $(document).ready(function () {
@@ -132,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const cubePowerup = cube.querySelector(".powerup");
       cubePowerup.style.backgroundImage = `url(${randomValue})`;
       document.getElementById("img-sale").setAttribute("src", randomValue);
-      changeVar(cube, "rgba(69,185,251,0.33)");
+      changeVar(cube, "rgb(255 116 116)");
     } else {
       console.log("Không tìm thấy giá trị phù hợp.");
     }
@@ -375,14 +370,14 @@ document.addEventListener("DOMContentLoaded", function () {
           const cubePowerup = cube.querySelector(".powerup");
           cubePowerup.style.backgroundImage = `url(${randomValue})`;
           document.getElementById("img-sale").setAttribute("src", randomValue);
-          changeVar(cube, "rgba(69,185,251,0.33)");
+          changeVar(cube, "rgb(255 116 116)");
           ctop.style.transform = "translateY(-3rem)";
           cleft.style.transform = "translateX(-3rem)";
           cright.style.transform = "translateX(3rem)";
           ctop.style.opacity = 0.1;
           cleft.style.opacity = 0.1;
           cright.style.opacity = 0.1;
-          glow.style.opacity = 0.5;
+          glow.style.opacity = 1;
           powerup.style.opacity = 1;
           cube.style.animationPlayState = "paused";
           powerup.style.zIndex = 10;
@@ -416,14 +411,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const cubePowerup = cube.querySelector(".powerup");
         cubePowerup.style.backgroundImage = `url(${randomValue})`;
         document.getElementById("img-sale").setAttribute("src", randomValue);
-        changeVar(cube, "rgba(69,185,251,0.33)");
+        changeVar(cube, "rgb(255 116 116)");
         ctop.style.transform = "translateY(-3rem)";
         cleft.style.transform = "translateX(-3rem)";
         cright.style.transform = "translateX(3rem)";
         ctop.style.opacity = 0.1;
         cleft.style.opacity = 0.1;
         cright.style.opacity = 0.1;
-        glow.style.opacity = 0.5;
+        glow.style.opacity = 1;
         powerup.style.opacity = 1;
         cube.style.animationPlayState = "paused";
         powerup.style.zIndex = 10;
@@ -470,7 +465,7 @@ document.addEventListener("DOMContentLoaded", function () {
           ctop.style.opacity = 0.1;
           cleft.style.opacity = 0.1;
           cright.style.opacity = 0.1;
-          glow.style.opacity = 0.5;
+          glow.style.opacity = 1;
           powerup.style.opacity = 1;
           cube.style.animationPlayState = "paused";
           powerup.style.zIndex = 10;
