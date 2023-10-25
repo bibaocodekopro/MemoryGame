@@ -3,7 +3,7 @@
   border: 0;
   margin-left: auto;
   margin-right: auto;
-  font-family: monospace;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
   max-width: 1920px;
 }
 
@@ -214,7 +214,7 @@ body {
 }
 
 .popup-get-gift {
-  z-index: 9;
+  z-index: 11;
 }
 
 .header-title {
@@ -274,7 +274,7 @@ header {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  min-width: 100px;
+
   padding: 15px 20px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 20px;
@@ -539,7 +539,7 @@ header {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 10;
+  z-index: 12;
 }
 
 .popup-content {
@@ -708,12 +708,11 @@ input {
 }
 
 .fullName {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+
   font-size: 24px;
 }
 
 .phoneNumber {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
   font-size: 24px;
 }
 
@@ -861,6 +860,32 @@ input {
     font-size: 16px;
     line-height: 15px;
   }
+
+  .powerup {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .box {
+    width: 200px;
+    height: 200px;
+  }
+
+  .box-cube {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hexagon {
+    width: 200px;
+    height: 200px;
+    filter: blur(30px);
+  }
+
+  .cube {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 @media screen and (max-width:768px) {
@@ -890,28 +915,33 @@ input {
   }
 
   .box {
-    width: 200px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
   }
 
   .box-cube {
-    width: 200px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
   }
 
   .hexagon {
-    width: 200px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
     filter: blur(30px);
   }
 
   .cube {
-    width: 200px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
   }
 
   .rules {
     margin-top: 50px;
+  }
+
+  .powerup {
+    width: 200px !important;
+    height: 200px !important;
   }
 
 }
@@ -920,6 +950,13 @@ input {
   .btn-get-gift {
     font-size: 15px;
   }
+
+  .game {
+    margin: 0;
+    width: 100%;
+  }
+
+
 
   .box {
     width: 150px;
@@ -947,8 +984,8 @@ input {
   }
 
   .powerup {
-    width: 200px !important;
-    height: 200px !important;
+    width: 180px !important;
+    height: 180px !important;
   }
 
   .header-title {
@@ -970,28 +1007,40 @@ input {
   }
 
   .main {
-    width: 98%;
+    width: 100%;
   }
 
   .popup-content {
     width: 350px;
   }
 
+  .tab-menu {
+    display: flex;
+    justify-content: space-around;
+  }
+
   .tab {
-    margin: 0 10px;
+    width: 23%;
+    margin: 0;
   }
 
   .title-tab {
-    padding: 10px 8px;
     font-size: 12px;
-    line-height: 12px;
-
   }
 
+  .game {
+    width: 100%;
+  }
+
+  .box-in-top {
+    width: 100%;
+    justify-content: space-around;
+  }
 
   .box {
-    width: 110px;
+    width: 30%;
     height: 110px;
+    margin: 0;
   }
 
   .box-cube {
@@ -1012,8 +1061,8 @@ input {
   }
 
   .powerup {
-    width: 120px !important;
-    height: 120px !important;
+    width: 100px !important;
+    height: 100px !important;
   }
 
   .rules {
@@ -1035,15 +1084,19 @@ input {
 }
 
 @media screen and (max-width:320px) {
+  .game {
+    width: 100%;
+  }
+
+  .box-in-top {
+    width: 100%;
+  }
+
   .box {
-    width: 80px;
+    width: 30%;
     height: 80px;
   }
 
-  .box-cube {
-    width: 80px;
-    height: 80px;
-  }
 
   .hexagon {
     display: none;
@@ -1052,6 +1105,7 @@ input {
   .cube {
     width: 80px;
     height: 80px;
+
   }
 
   .powerup {
@@ -1067,22 +1121,33 @@ input {
     width: 270px;
   }
 
-
-
-  .tab {
-    margin: 0 9px;
-
-    width: 30px;
+  .box-cube {
+    width: 100%;
+    height: 80px;
   }
 
   .title-tab {
-    width: 30px;
-    padding: 10px 0;
-    font-size: 5px;
-    line-height: 5px;
-
+    font-size: 9px;
   }
 
+  .tab-menu {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .tab {
+    width: 23%;
+    margin: 0;
+  }
+
+  .title {
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+
+  .main {
+    padding-top: 10px;
+  }
 }
 
 @media screen and (min-width:1920px) {}
