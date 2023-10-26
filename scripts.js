@@ -3,26 +3,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const cubes = document.querySelectorAll(".box-cube");
   const transitionTime = "750ms";
 
-  // Phần này random các hình theo mảng
-  // const randomSale = {
-  //   "100k1": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
-  //   "100k2": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
-  //   "100k3": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402",
-  //   "150k": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-150k-1698051402.png?_t=1698051402",
-  //   "200k": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-200k-1698051402.png?_t=1698051403",
-  //   "250k": "https://dev.khoavang.vn/resources/uploads/mistery-box/sale-250k-1698051403.png?_t=1698051403",
-  // };
   const randomSale = [
-    { money: 100000, percent: 8.89, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402' },
-    { money: 150000, percent: 13.33, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-150k-1698051402.png?_t=1698051402' },
-    { money: 200000, percent: 20, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-200k-1698051402.png?_t=1698051403' },
-    { money: 250000, percent: 27.78, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-250k-1698051403.png?_t=1698051403' },
-    { money: 300000, percent: 24.44, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-300k-1698051403.png?_t=1698051403' },
-    { money: 400000, percent: 5.56, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-400k-1698141687.png?_t=1698141687' },
+    { money: 100000, percent: 8.89, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-100k-1698051402.png?_t=1698051402', code: 'GGSVKW2GD' },
+    { money: 150000, percent: 13.33, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-150k-1698051402.png?_t=1698051402', code: 'FSVG32GF' },
+    { money: 200000, percent: 20, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-200k-1698051402.png?_t=1698051403', code: 'QRSF532GAS' },
+    { money: 250000, percent: 27.78, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-250k-1698051403.png?_t=1698051403', code: 'GSCC1W24' },
+    { money: 300000, percent: 24.44, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-300k-1698051403.png?_t=1698051403', code: 'CSFG125GF' },
+    { money: 400000, percent: 5.56, img: 'https://dev.khoavang.vn/resources/uploads/mistery-box/sale-400k-1698141687.png?_t=1698141687', code: 'HHSCSRT12' },
   ];
-  // tạo sẵn giá trị random để lưu vào local storage khi người dùng đã mở hộp rồi
   let randomValue;
-
+  let randomValueImg;
 
   //các nút đóng và xử lý input cho chuỗi
   const closeButton = document.querySelector(".close")
@@ -94,7 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
   });
-  function showCoupon() {
+  async function showCoupon() {
+    const coupon = document.getElementById("coupon");
+    coupon.innerHTML = await randomValue.code;
     const popupShowCoupon = document.getElementById("popupShowCoupon");
     popupShowCoupon.style.display = "block";
   }
@@ -122,11 +114,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   function award(cube) {
     // Xử lý random ở đây
-    randomValue = getRandomItemByPercent(randomSale).img;
-    if (randomValue) {
+    randomValue = getRandomItemByPercent(randomSale);
+    randomValueImg = randomValue.img;
+
+    if (randomValueImg) {
       const cubePowerup = cube.querySelector(".powerup");
-      cubePowerup.style.backgroundImage = `url(${randomValue})`;
-      document.getElementById("img-sale").setAttribute("src", randomValue);
+      cubePowerup.style.backgroundImage = `url(${randomValueImg})`;
+      document.getElementById("img-sale").setAttribute("src", randomValueImg);
       changeVar(cube, "rgb(255 116 116)");
     } else {
       console.log("Không tìm thấy giá trị phù hợp.");
@@ -314,6 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   function closeShowCoupon() {
     const closeShowCoupon = document.getElementById("popupShowCoupon");
+
     closeShowCoupon.style.display = "none"
   }
 
@@ -349,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const savedIpAddress = localStorage.getItem("userIpAddress");
     getIpAddress(function (currentIpAddress) {
       if (savedIpAddress === currentIpAddress) {
-        const randomValue = localStorage.getItem("randomValue");
+        const randomValueImg = localStorage.getItem("randomValueImg");
         const cubeId = localStorage.getItem("cubeId");
         const cubeElement = document.getElementById(cubeId);
 
@@ -368,8 +363,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         function openCube(cube) {
           const cubePowerup = cube.querySelector(".powerup");
-          cubePowerup.style.backgroundImage = `url(${randomValue})`;
-          document.getElementById("img-sale").setAttribute("src", randomValue);
+          cubePowerup.style.backgroundImage = `url(${randomValueImg})`;
+          document.getElementById("img-sale").setAttribute("src", randomValueImg);
           changeVar(cube, "rgb(255 116 116)");
           ctop.style.transform = "translateY(-3rem)";
           cleft.style.transform = "translateX(-3rem)";
@@ -390,8 +385,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     //ta kiểm tra xem người mã đã mở chưa nếu mở rồi mà chưa nhận voucher thì hiện nút cho ngta nhận thưởng
   } else {
-    if (localStorage.getItem("randomValue") && localStorage.getItem("cubeId")) {
-      const randomValue = localStorage.getItem("randomValue");
+    if (localStorage.getItem("randomValueImg") && localStorage.getItem("cubeId")) {
+      const randomValueImg = localStorage.getItem("randomValueImg");
       const cubeId = localStorage.getItem("cubeId");
       const cubeElement = document.getElementById(cubeId);
 
@@ -409,8 +404,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       function openCube(cube) {
         const cubePowerup = cube.querySelector(".powerup");
-        cubePowerup.style.backgroundImage = `url(${randomValue})`;
-        document.getElementById("img-sale").setAttribute("src", randomValue);
+        cubePowerup.style.backgroundImage = `url(${randomValueImg})`;
+        document.getElementById("img-sale").setAttribute("src", randomValueImg);
         changeVar(cube, "rgb(255 116 116)");
         ctop.style.transform = "translateY(-3rem)";
         cleft.style.transform = "translateX(-3rem)";
@@ -484,8 +479,8 @@ document.addEventListener("DOMContentLoaded", function () {
               const cubeId = cube.getAttribute("id");
 
               localStorage.setItem("cubeId", cubeId);
-              localStorage.setItem("randomValue", randomValue);
-              console.log("randomvaue: " + randomValue + "cubeId:" + cubeId);
+              localStorage.setItem("randomValueImg", randomValueImg);
+              console.log("randomvaue: " + randomValueImg + "cubeId:" + cubeId);
               console.log(cube)
               const getGift = document.querySelector(".popup-get-gift");
               getGift.style.display = "block";

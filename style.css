@@ -854,6 +854,10 @@ input {
     margin-bottom: 30px;
   }
 
+  .tab {
+    width: auto;
+  }
+
   .title-tab {
     padding: 10px 15px;
 
@@ -1020,12 +1024,12 @@ input {
   }
 
   .tab {
-    width: 23%;
-    margin: 0;
+    width: auto;
+    margin: 0 5px;
   }
 
   .title-tab {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .game {
@@ -1127,7 +1131,7 @@ input {
   }
 
   .title-tab {
-    font-size: 9px;
+    font-size: 7px;
   }
 
   .tab-menu {
@@ -1136,13 +1140,13 @@ input {
   }
 
   .tab {
-    width: 23%;
-    margin: 0;
+    width: auto;
+    margin: 0 4px;
   }
 
-  .title {
-    margin-bottom: 10px;
-    font-size: 12px;
+  .title h2 {
+    margin-bottom: 5px;
+    font-size: 10px;
   }
 
   .main {

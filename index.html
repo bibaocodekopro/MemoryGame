@@ -4,36 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hộp Quà Bí Mật - Chơi Game Có Thưởng - Khóa Vàng</title>
+    <title>Mừng Lễ Giáng Sinh - Mở Ngay Quà Khủng</title>
     <meta name="keywords" content="khoavang, khoavangsale, hopqua, trochoi, hopquabimat" />
-    <meta name="description"
-        content="Trò chơi hộp quà bí mật tại Khoá Vàng - xem sự may mắn của bạn. Tham khảo cách chơi, hiểu quy tắc trước khi chơi. Đặt chân vào khám phá ngay!" />
+    <meta name="description" content="Lễ Noen này, nếu bạn chưa có ai tặng quà thì đừng có buồn. Bởi vì, Khoá Vàng luôn
+        luôn dành 'quà khủng' dành cho bạn. Đặt chân vào khám phá ngay thôi!" />
     <link rel="canonical" href="https://khoavang.vn/mistery-box" />
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.4/tailwind.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
+    <link rel="stylesheet" href="style.css">
     <!-- Design for table  -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <script defer src="https://code.jquery.com/jquery-3.7.0.js">  </script>
     <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js">  </script>
     <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js">  </script>
+    <script src="scripts.js"></script>
 </head>
 
 
 <body>
-    <h1 style="display: none;">"Hộp Quà Bí Mật" - Xem sự may mắn của bạn</h1>
+    <h1 style="display: none;">Trao Quà Tặng - Mừng Giáng Sinh</h1>
     <div class="snowflakes" aria-hidden="true">
 
         <div class="snowflake">
@@ -67,8 +66,6 @@
             ❄
         </div>
     </div>
-    <script src="scripts.js"></script>
-
     <canvas id="confetti"></canvas>
     <header>
         <div class="tab-menu">
@@ -95,7 +92,7 @@
                     </a>
                     <a target="_blank" href="https://khoavang.vn/pc-gaming" rel="noopener noreferrer"
                         class="carousel-item ">
-                        <img src="https://dev.khoavang.vn/resources/uploads/mistery-box/banner2-1698203410.png?_t=1698203410"
+                        <img src="https://dev.khoavang.vn/resources/uploads/mistery-box/banner2-1698211093.png?_t=1698211093"
                             class="
                             d-block w-100" alt="banner-pc-gaming-khoavang">
                     </a>
@@ -714,7 +711,7 @@
             <h3 class="title-popup">Cảm ơn bạn đã tham gia chương trình</h3>
             <label for="showCoupon" class="title-show-coupon">Đây là mã của bạn:</label>
             <div class="Coupon-show">
-                <p class="coupon" id="coupon">1GSC421FF</p>
+                <p class="coupon" id="coupon"></p>
                 <div alt="" class="copy-icon" id="copyButton">
                     <img src="https://dev.khoavang.vn/resources/uploads/mistery-box/copy-text-icon-1698051402.png?_t=1698051402"
                         alt="" class="img-copy">
